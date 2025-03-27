@@ -2,6 +2,8 @@
   "name": "coin-cli",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
+  "main": "main.js",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
@@ -10,6 +12,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.24.5",
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-named-asset-import": "^0.3.8",
@@ -33,6 +36,8 @@
     "jest-resolve": "^27.4.2",
     "jest-watch-typeahead": "^1.0.0",
     "mini-css-extract-plugin": "^2.4.5",
+    "mobx": "^6.13.7",
+    "mobx-react-lite": "^4.1.0",
     "postcss": "^8.4.4",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-loader": "^6.2.1",
@@ -44,6 +49,7 @@
     "react-dev-utils": "^12.0.1",
     "react-dom": "^19.0.0",
     "react-refresh": "^0.11.0",
+    "react-router-dom": "^7.4.0",
     "resolve": "^1.20.0",
     "resolve-url-loader": "^4.0.0",
     "sass-loader": "^12.3.0",
@@ -58,10 +64,25 @@
     "webpack-manifest-plugin": "^4.0.2",
     "workbox-webpack-plugin": "^6.4.1"
   },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "electron": "^35.0.1",
+    "electron-builder": "^25.1.8",
+    "electron-installer-dmg": "^5.0.1"
+  },
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "elec": "electron .",
+    "package:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --out=out --icon=assets/app-icon/mac/app.icns --osx-sign.identity='Developer ID Application: GitHub' --extend-info=assets/mac/info.plist",
+    "package:win": "electron-packager . --overwrite --platform=win32 --arch=x64 --out=out --icon=src/image/logo.ico",
+    "package:linux": "electron-packager . --overwrite --platform=linux --arch=x64 --out=out",
+    "package:sign-exe": "signcode './out/Electron API Demos-win32-ia32/Electron API Demos.exe' --cert ~/electron-api-demos.p12 --prompt --name 'Electron API Demos' --url 'http://electron.atom.io'",
+    "package:installer": "node ./script/installer.js",
+    "dist:win": "electron-builder --win",
+    "dist:linux": "electron-builder --linux",
+    "dist:mac": "electron-builder --mac"
   },
   "eslintConfig": {
     "extends": [

@@ -1,0 +1,27 @@
+/* 确保布局占满全屏高度 */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Logo 样式 */
+.logo {
+  height: 32px;
+  margin: 16px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1890ff;
+}
+
+/* 左侧菜单样式 */
+.ant-layout-sider {
+  background-color: #fff; /* 菜单背景色 */
+  border-right: 1px solid #f0f0f0; /* 右侧边框 */
+}
+
+/* 右侧内容区域样式 */
+.ant-layout-content {
+  background: #f0f2f5; /* 内容区域背景色 */
+}

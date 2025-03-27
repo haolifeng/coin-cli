@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+
+import React, {useEffect} from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import MainLayout from './MainLayout';
+import { observer } from 'mobx-react-lite'
+import { useStores } from './use-stores';
+
+import api from "./clientApi/api";
+
+
+
+const App = observer(()=> {
+
+  const { myOrderStore } = useStores();
+/*
+  useEffect(() => {
+   api.getOrder("{}",(err, data) => {
+      if (err) {
+        console.log('err: ', err)
+        throw err;
+      }
+
+      console.log(data);
+      myOrderStore.updateOrders(data)
+    })
+  }, []);
+*/
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <MainLayout  />
+      </Router>
   );
-}
+});
 
 export default App;
